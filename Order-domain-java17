@@ -1,0 +1,13 @@
+{
+  "aggregate": "Order",
+  "states": ["DRAFT", "CONFIRMED", "PAID", "CANCELLED"],
+  "rules": [
+    "An order must contain at least one line before confirmation.",
+    "Quantity must be a positive whole number.",
+    "A cancelled order cannot be paid.",
+    "A paid order cannot return to draft.",
+    "Order total is derived from immutable line prices and quantities."
+  ],
+  "events": ["OrderConfirmed", "PaymentRecorded", "OrderCancelled"],
+  "architecture_constraint": "Keep the domain module independent of Spring, JPA, HTTP, and database adapters."
+}
